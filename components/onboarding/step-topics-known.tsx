@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { PillSelect } from '@/components/shared/pill-select'
-import { ArrowRight, SkipForward } from 'lucide-react'
+import { ArrowRight01Icon, Next01Icon } from 'hugeicons-react'
 import type { ParsedSubject } from './step-syllabus-upload'
 
 interface StepTopicsKnownProps {

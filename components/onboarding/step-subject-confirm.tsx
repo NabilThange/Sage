@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Check, X, Plus, ArrowRight } from 'lucide-react'
+import { Tick02Icon, Cancel01Icon, Add01Icon, ArrowRight01Icon } from 'hugeicons-react'
 import { cn } from '@/lib/utils'
 import type { ParsedSubject } from './step-syllabus-upload'
 

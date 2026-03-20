@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { Brain, User } from 'lucide-react'
+import { AiNetworkIcon, UserIcon } from 'hugeicons-react'
 
 interface ChatMessageProps {
   role: 'user' | 'assistant'

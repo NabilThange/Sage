@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { BookOpen, Clock, ChevronRight } from 'lucide-react'
+import { Book02Icon, Clock01Icon, ArrowRight01Icon } from 'hugeicons-react'
 import Link from 'next/link'
 
 interface SubjectCardProps {
@@ -80,7 +80,7 @@ export function SubjectCard({
 
           {/* Chapter count badge */}
           <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-background/80 backdrop-blur-sm text-foreground border border-border/40">
-            <BookOpen className="h-2.5 w-2.5" />
+            <Book02Icon className="h-2.5 w-2.5" />
             {chapterCount} chapters
           </span>
 
@@ -97,7 +97,7 @@ export function SubjectCard({
               )}
               <div className="flex items-center gap-1 text-xs text-primary mt-2">
                 <span>Open</span>
-                <ChevronRight className="h-3 w-3" />
+                <ArrowRight01Icon className="h-3 w-3" />
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export function SubjectCard({
           {/* Last studied */}
           {lastStudied && (
             <p className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-              <Clock className="h-2.5 w-2.5" />
+              <Clock01Icon className="h-2.5 w-2.5" />
               Last studied: {lastStudied}
             </p>
           )}

@@ -5,38 +5,47 @@ import { useEffect, useRef, useState } from "react";
 const steps = [
   {
     number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
+    title: "Enter your name & syllabus",
+    description: "No account needed. Type your name and upload your syllabus PDF. Recallio parses it to extract subjects and chapters automatically.",
+    code: `// Login — no password needed
+const user = await recallio.login({ name: "Aryan" })
 
-optimus.connect({
-  source: 'your-database',
-  sync: true
-})`,
+// Upload syllabus PDF
+await recallio.onboarding.parseSyllabus({
+  file: syllabusFile,
+  level: "BTech Sem 3"
+})
+
+// → Subjects detected: IOT, DS, OS, CN`,
   },
   {
     number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
-})`,
+    title: "Chat, plan, and study",
+    description: "Ask your AI planner anything. It uses your memory to plan smart sessions, schedule exams, and route you to the right topics.",
+    code: `// Planner chat
+const plan = await planner.chat({
+  message: "I have IOT exam in 4 days",
+  userId: user.id
+})
+
+// → Based on your 12-day streak and weak 
+//   spots in Antenna Theory, here's your 
+//   3-day revision plan...`,
   },
   {
     number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
+    title: "Memory grows with you",
+    description: "Every quiz result, every session, every re-explain signal is stored. The AI becomes smarter about you after every interaction.",
+    code: `// After every quiz, memory is updated
+await hindsight.retain(bankId, {
+  event: "quiz_completed",
+  subject: "Data Structures",
+  score: 72,
+  weak: ["Graph BFS", "Heap Sort"]
 })
 
-// Deployed to 12 regions`,
+// Future recall: "You scored 72% on DS,
+// consistently missing graph questions"`,
   },
 ];
 
@@ -47,12 +56,9 @@ export function HowItWorksSection() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
       { threshold: 0.1 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
@@ -70,7 +76,7 @@ export function HowItWorksSection() {
       ref={sectionRef}
       className="relative py-24 lg:py-32 bg-foreground text-background overflow-hidden"
     >
-      {/* Diagonal lines pattern */}
+      {/* Diagonal pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: `repeating-linear-gradient(
@@ -88,7 +94,7 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            How Recallio learns
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
@@ -97,7 +103,7 @@ export function HowItWorksSection() {
           >
             Three steps.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">One AI that remembers everything.</span>
           </h2>
         </div>
 
@@ -129,9 +135,7 @@ export function HowItWorksSection() {
                       <div className="mt-4 h-px bg-background/20 overflow-hidden">
                         <div 
                           className="h-full bg-background w-0"
-                          style={{
-                            animation: 'progress 5s linear forwards'
-                          }}
+                          style={{ animation: 'progress 5s linear forwards' }}
                         />
                       </div>
                     )}
@@ -143,7 +147,7 @@ export function HowItWorksSection() {
 
           {/* Code display */}
           <div className="lg:sticky lg:top-32 self-start">
-            <div className="border border-background/10 overflow-hidden">
+            <div className="border border-background/10 overflow-hidden rounded-xl">
               {/* Window header */}
               <div className="px-6 py-4 border-b border-background/10 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -151,19 +155,17 @@ export function HowItWorksSection() {
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                   <div className="w-3 h-3 rounded-full bg-background/20" />
                 </div>
-                <span className="text-xs font-mono text-background/40">workflow.ts</span>
+                <span className="text-xs font-mono text-background/40">recallio.ts</span>
               </div>
 
               {/* Code content */}
-              <div className="p-8 font-mono text-sm min-h-[280px]">
+              <div className="p-8 font-mono text-sm min-h-[320px]">
                 <pre className="text-background/70">
                   {steps[activeStep].code.split('\n').map((line, lineIndex) => (
                     <div 
                       key={`${activeStep}-${lineIndex}`} 
                       className="leading-loose code-line-reveal"
-                      style={{ 
-                        animationDelay: `${lineIndex * 80}ms`,
-                      }}
+                      style={{ animationDelay: `${lineIndex * 80}ms` }}
                     >
                       <span className="text-background/20 select-none w-8 inline-block">{lineIndex + 1}</span>
                       <span className="inline-flex">
@@ -171,9 +173,7 @@ export function HowItWorksSection() {
                           <span
                             key={`${activeStep}-${lineIndex}-${charIndex}`}
                             className="code-char-reveal"
-                            style={{
-                              animationDelay: `${lineIndex * 80 + charIndex * 15}ms`,
-                            }}
+                            style={{ animationDelay: `${lineIndex * 80 + charIndex * 15}ms` }}
                           >
                             {char === ' ' ? '\u00A0' : char}
                           </span>
@@ -187,7 +187,7 @@ export function HowItWorksSection() {
               {/* Status */}
               <div className="px-6 py-4 border-t border-background/10 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-mono text-background/40">Ready</span>
+                <span className="text-xs font-mono text-background/40">Memory synced</span>
               </div>
             </div>
           </div>
@@ -207,10 +207,7 @@ export function HowItWorksSection() {
         }
         
         @keyframes lineReveal {
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          to { opacity: 1; transform: translateX(0); }
         }
         
         .code-char-reveal {
@@ -220,10 +217,7 @@ export function HowItWorksSection() {
         }
         
         @keyframes charReveal {
-          to {
-            opacity: 1;
-            filter: blur(0);
-          }
+          to { opacity: 1; filter: blur(0); }
         }
       `}</style>
     </section>

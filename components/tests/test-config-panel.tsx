@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { BookOpen, Clock, Zap, GraduationCap } from 'lucide-react'
+import { Book02Icon, Clock01Icon, Zap01Icon, MortarboardIcon } from 'hugeicons-react'
 
 interface TestConfig {
   subject: string

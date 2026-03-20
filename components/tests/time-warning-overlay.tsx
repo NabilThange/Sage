@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { AlertTriangle } from 'lucide-react'
+import { Alert01Icon } from 'hugeicons-react'
 
 interface TimeWarningOverlayProps {
   secondsLeft: number

@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
-  CalendarDays,
-  GraduationCap,
-  ClipboardCheck,
-  User,
-  Brain,
-  LogOut,
-  Flame,
-} from 'lucide-react'
+  Calendar03Icon,
+  MortarboardIcon,
+  Task01Icon,
+  UserIcon,
+  AiNetworkIcon,
+  Logout01Icon,
+  Fire01Icon,
+} from 'hugeicons-react'
 import { useAuth } from '@/providers/auth-provider'
 import {
   Sidebar,
@@ -33,22 +33,22 @@ const navItems = [
   {
     label: 'Planner',
     href: '/planner',
-    icon: CalendarDays,
+    icon: Calendar03Icon,
   },
   {
     label: 'Mentor',
     href: '/mentor',
-    icon: GraduationCap,
+    icon: MortarboardIcon,
   },
   {
     label: 'Tests',
     href: '/tests',
-    icon: ClipboardCheck,
+    icon: Task01Icon,
   },
   {
     label: 'Profile',
     href: '/profile',
-    icon: User,
+    icon: UserIcon,
   },
 ]
 
@@ -67,7 +67,7 @@ export function AppSidebar({ onMemoryClick }: AppSidebarProps) {
       <SidebarHeader className="px-4 py-5">
         <Link href="/planner" className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Brain className="h-4.5 w-4.5 text-primary-foreground" />
+            <AiNetworkIcon className="h-4.5 w-4.5 text-primary-foreground" />
           </div>
           <span className="text-lg font-semibold tracking-tight text-sidebar-foreground">
             Recallio
@@ -79,9 +79,9 @@ export function AppSidebar({ onMemoryClick }: AppSidebarProps) {
 
       {/* Streak badge */}
       {streakCount > 0 && (
-        <div className="mx-4 mt-3 mb-1 flex items-center gap-2 rounded-lg bg-[#F5A524]/10 px-3 py-2">
-          <Flame className="h-4 w-4 text-[#F5A524]" />
-          <span className="text-sm font-medium text-[#F5A524]">
+        <div className="mx-4 mt-3 mb-1 flex items-center gap-2 rounded-lg bg-amber-400/10 px-3 py-2">
+          <Fire01Icon className="h-4 w-4 text-amber-400" />
+          <span className="text-sm font-medium text-amber-400">
             {streakCount}-day streak
           </span>
         </div>
@@ -134,7 +134,7 @@ export function AppSidebar({ onMemoryClick }: AppSidebarProps) {
                     pathname === '/memory' && 'bg-primary/10 text-primary font-medium'
                   )}
                 >
-                  <Brain className="h-4.5 w-4.5" />
+                  <AiNetworkIcon className="h-4.5 w-4.5" />
                   <span>Memory</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -162,7 +162,7 @@ export function AppSidebar({ onMemoryClick }: AppSidebarProps) {
                 className="h-7 w-7 shrink-0 text-muted-foreground hover:text-destructive"
                 onClick={logout}
               >
-                <LogOut className="h-3.5 w-3.5" />
+                <Logout01Icon className="h-3.5 w-3.5" />
                 <span className="sr-only">Log out</span>
               </Button>
             </TooltipTrigger>

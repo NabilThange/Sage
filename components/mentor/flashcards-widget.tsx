@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Loader2, ChevronDown, ChevronUp, Sparkles, RotateCcw } from 'lucide-react'
+import { Loading03Icon, ArrowDown01Icon, ArrowUp01Icon, AiStar01Icon, Loading03Icon as RotateIcon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 
 interface Flashcard {

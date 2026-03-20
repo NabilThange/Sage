@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { QuestionCard } from '@/components/tests/question-card'
 import { QuestionPillNav } from '@/components/tests/question-pill-nav'
 import { TimeWarningOverlay } from '@/components/tests/time-warning-overlay'
-import { Clock, ChevronLeft, ChevronRight, Send } from 'lucide-react'
+import { Clock01Icon, ArrowLeft01Icon, ArrowRight01Icon, SentIcon } from 'hugeicons-react'
 
 export interface QuizQuestion {
   question: string

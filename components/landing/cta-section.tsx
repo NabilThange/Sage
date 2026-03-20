@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight01Icon } from "hugeicons-react";
 import { AnimatedTetrahedron } from "./animated-tetrahedron";
 
 export function CtaSection() {
@@ -52,35 +53,39 @@ export function CtaSection() {
               {/* Left content */}
               <div className="flex-1">
                 <h2 className="text-4xl lg:text-7xl font-display tracking-tight mb-8 leading-[0.95]">
-                  Ready to build
+                  Ready to study
                   <br />
-                  something great?
+                  smarter?
                 </h2>
 
                 <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
-                  Join thousands of teams shipping faster with Optimus. 
-                  Start free, scale infinitely.
+                  Join students using Recallio to ace their exams. 
+                  Start free — no account, no credit card.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <Button
-                    size="lg"
-                    className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
-                  >
-                    Start building free
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
-                  >
-                    Talk to sales
-                  </Button>
+                  <Link href="/login">
+                    <Button
+                      size="lg"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-14 text-base rounded-full group"
+                    >
+                      Start learning free
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                  <Link href="#how-it-works">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="h-14 px-8 text-base rounded-full border-foreground/20 hover:bg-foreground/5"
+                    >
+                      See how it works
+                    </Button>
+                  </Link>
                 </div>
 
                 <p className="text-sm text-muted-foreground mt-8 font-mono">
-                  No credit card required
+                  No credit card · Just your name
                 </p>
               </div>
 

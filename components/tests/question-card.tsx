@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { CheckCircle2, XCircle } from 'lucide-react'
+import { TickDouble02Icon, CancelCircleIcon } from 'hugeicons-react'
 
 interface QuestionCardProps {
   questionNumber: number

@@ -1,0 +1,85 @@
+# Recallio — Supabase + Hindsight Integration Plan
+
+## Goal Description
+Recallio requires a dual-storage approach:
+1. **Supabase (PostgreSQL)**: For structured, relational data (users, subjects, chapters, test scores, scheduled tasks).
+2. **Hindsight Cloud**: For agentic memory (patterns, preferences, qualitative insights, cross-session context).
+
+This plan outlines the database schema, the role of each service, and how they synchronize to provide a personalized AI tutoring experience.
+
+## Proposed Architecture
+
+### Supabase Database Schema
+
+#### 1. `users`
+| Column | Type | Description |
+|---|---|---|
+| `id` | uuid (PK) | Unique user ID |
+| `name` | text | User's display name |
+| `onboarding_completed` | boolean | Tracks onboarding state |
+| `created_at` | timestamp | |
+
+#### 2. `subjects`
+| Column | Type | Description |
+|---|---|---|
+| `id` | uuid (PK) | |
+| `user_id` | uuid (FK) | Reference to `users.id` |
+| `name` | text | Subject name (e.g., "Data Structures") |
+| `chapters_count` | int | Total chapters in the syllabus |
+
+#### 3. `chapters`
+| Column | Type | Description |
+|---|---|---|
+| `id` | uuid (PK) | |
+| `subject_id` | uuid (FK) | Reference to `subjects.id` |
+| `name` | text | Chapter name |
+| `order` | int | Sort order |
+
+#### 4. `test_results`
+| Column | Type | Description |
+|---|---|---|
+| `id` | uuid (PK) | |
+| `user_id` | uuid (FK) | |
+| `subject_id` | uuid (FK) | |
+| `score` | int | Correct answers count |
+| `total_questions` | int | |
+| `details` | jsonb | Full Q&A mapping |
+| `created_at` | timestamp | |
+
+#### 5. `tasks` (Scheduler)
+| Column | Type | Description |
+|---|---|---|
+| `id` | uuid (PK) | |
+| `user_id` | uuid (FK) | |
+| `title` | text | Task name |
+| `date` | date | Scheduled date |
+| `status` | text | 'pending', 'completed', 'rescheduled' |
+| `type` | text | 'lesson', 'quiz', 'revision' |
+
+---
+
+### Hindsight Integration Workflow
+
+Hindsight acts as the "Nervous System" of Recallio. Every structured event in Supabase has a corresponding "Soft Event" in Hindsight.
+
+| Event | Action | supbase | Hindsight `retain()` |
+|---|---|---|---|
+| **Onboarding** | Save syllabus | Create `subjects`/`chapters` | `"Student profile built: Sem 3, knows sorting, weak in graph traversal"` |
+| **Study Session** | Finish Pomodoro | - | `"User studied OS for 50m. Reported feeling 'Struggled' with Process Sync."` |
+| **Test Taken** | Submit Quiz | Create `test_results` | `"Scored 4/10 on IOT quiz. Missed all questions about VSWR."` |
+| **Chat Interaction** | Planner/Mentor | - | `"User mentioned they have an exam on April 20th and are feeling stressed."` |
+
+### The personalization loop:
+1. **Recall**: Before every LLM call, fetch relevant memories from Hindsight using `recall(bank_id, query)`.
+2. **Reflect**: Periodically (or on demand) call `reflect(bank_id, question)` to get synthesized insights (e.g., "What are the student's consistent weak areas?").
+3. **Augment**: Inject these Hindsight insights into the Groq system prompt to ensure the AI's response is grounded in the student's actual history.
+
+## Verification Plan
+
+### Automated Tests
+- No automated tests currently planned; manual verification in the browser via `console.log` and Hindsight Cloud UI.
+
+### Manual Verification
+1. **Onboarding Flow**: Complete onboarding and verify data exists in Supabase (subjects/chapters) and Hindsight (via Cloud UI).
+2. **Personalized Greeting**: Log out/in and verify the "Daily Briefing Card" correctly reflects the last stored Hindsight activity.
+3. **Memory Panel**: Open `/memory` and verify all 4 memory types (World, Experiences, Observations, Opinions) are populated after a few interactions.

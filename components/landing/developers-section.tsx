@@ -1,56 +1,61 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy01Icon, Tick02Icon } from "hugeicons-react";
 
 const codeExamples = [
   {
-    label: "Install",
-    code: `npm install @optimus/sdk
+    label: "retain()",
+    code: `import { hindsight } from '@/lib/hindsight'
 
-# or
-yarn add @optimus/sdk
-pnpm add @optimus/sdk`,
+// Write a memory after quiz completion
+await hindsight.retain(
+  bankId,
+  'User scored 58% on IOT Chapter 3. ' +
+  'Struggled with VSWR and antenna gain.'
+)`,
   },
   {
-    label: "Initialize",
-    code: `import { Optimus } from '@optimus/sdk'
+    label: "recall()",
+    code: `// Retrieve memories before every AI call
+const context = await hindsight.recall(
+  bankId,
+  'IOT weak spots and past quiz results'
+)
 
-const optimus = new Optimus({
-  apiKey: process.env.OPTIMUS_KEY
-})`,
+// context is injected into LLM system prompt
+const response = await groq.chat({ context })`,
   },
   {
-    label: "Deploy",
-    code: `const app = await optimus.deploy({
-  name: 'my-app',
-  region: 'auto',
-  scaling: {
-    min: 1,
-    max: 100
-  }
-})
+    label: "reflect()",
+    code: `// Synthesise deep insights from memory
+const insight = await hindsight.reflect(
+  bankId,
+  'What should this student focus on today?'
+)
 
-console.log('Live at:', app.url)`,
+// insight: "Aryan consistently misses
+// graph-traversal questions. Recommend
+// 20-min targeted drill on BFS/DFS."`,
   },
 ];
 
 const features = [
   { 
-    title: "TypeScript native", 
-    description: "Full type safety with auto-generated types."
+    title: "4 memory types", 
+    description: "World, Experiences, Observations, Opinions."
   },
   { 
-    title: "Zero config", 
-    description: "Sensible defaults that just work."
+    title: "Groq LLM backend",
+    description: "qwen3-32b for fast, capable reasoning."
   },
   { 
-    title: "Edge-ready", 
-    description: "Runs anywhere: Node, Deno, Bun, browsers."
+    title: "Vectorize storage",
+    description: "Persistent per-user memory via Hindsight Cloud."
   },
   { 
-    title: "12KB gzipped", 
-    description: "Lightweight with zero dependencies."
+    title: "Next.js App Router",
+    description: "Built with RSC, server actions, and Tailwind v4."
   },
 ];
 
@@ -119,16 +124,18 @@ export function DevelopersSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              For developers
+              Hindsight Memory API
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Built by devs.
+              Three calls.
               <br />
-              <span className="text-muted-foreground">For devs.</span>
+              <span className="text-muted-foreground">Infinite memory.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              A thoughtfully designed SDK that gets out of your way. 
-              Ship faster with intuitive APIs and exceptional documentation.
+              Recallio is powered by Hindsight Cloud — a persistent, per-user memory system with
+              <strong className="text-foreground"> retain</strong>,
+              <strong className="text-foreground"> recall</strong>, and
+              <strong className="text-foreground"> reflect</strong> APIs that make your AI smarter with every interaction.
             </p>
             
             {/* Features */}
@@ -170,7 +177,7 @@ export function DevelopersSection() {
                   >
                     {example.label}
                     {activeTab === idx && (
-                      <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground" />
+                      <span className="absolute bottom-0 left-0 right-0 h-px bg-primary" />
                     )}
                   </button>
                 ))}

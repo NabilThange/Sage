@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Sparkles, AlertTriangle } from 'lucide-react'
+import { ArrowRight01Icon, AiStar01Icon, Alert01Icon } from 'hugeicons-react'
 import { cn } from '@/lib/utils'
 import type { ParsedSubject } from './step-syllabus-upload'
 

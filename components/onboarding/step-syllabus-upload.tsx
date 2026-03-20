@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
-import { Upload, FileText, Loader2, Sparkles, X, BookOpen } from 'lucide-react'
+import { Upload04Icon, FileAttachmentIcon, Loading03Icon, AiStar01Icon, Cancel01Icon, Book02Icon } from 'hugeicons-react'
 import { cn } from '@/lib/utils'
 
 // Pre-loaded syllabus templates

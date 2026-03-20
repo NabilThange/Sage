@@ -162,6 +162,11 @@
   --color-warning: var(--warning);
   --color-info: var(--info);
 
+  /* Recallio semantic color shorthands for Tailwind utilities */
+  --color-amber: var(--warning);
+  --color-green: var(--success);
+  --color-violet: var(--info);
+
   /* Radius scale — DESIGN_SYSTEM.MD: cards 12px, buttons 8px, pills 20px */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

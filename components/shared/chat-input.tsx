@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback } from 'react'
 import { cn } from '@/lib/utils'
-import { ArrowUp, Loader2 } from 'lucide-react'
+import { ArrowUp01Icon, Loading03Icon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 
 interface QuickAction {

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Network } from 'lucide-react'
+import { WifiConnected03Icon } from 'hugeicons-react'
 
 export function MindMapPlaceholder() {
   return (

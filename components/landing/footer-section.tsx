@@ -1,20 +1,21 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight01Icon, AiNetworkIcon } from "hugeicons-react";
 import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
   Product: [
-    { name: "Features", href: "#features" },
-    { name: "How it works", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Integrations", href: "#integrations" },
+    { name: "Planner", href: "/login" },
+    { name: "Mentor", href: "/login" },
+    { name: "Tests", href: "/login" },
+    { name: "Memory Panel", href: "/login" },
   ],
-  Developers: [
-    { name: "Documentation", href: "#developers" },
-    { name: "API Reference", href: "#" },
-    { name: "SDK", href: "#developers" },
-    { name: "Status", href: "#" },
+  Learn: [
+    { name: "How it works", href: "#how-it-works" },
+    { name: "Features", href: "#features" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "FAQs", href: "#" },
   ],
   Company: [
     { name: "About", href: "#" },
@@ -25,7 +26,7 @@ const footerLinks = {
   Legal: [
     { name: "Privacy", href: "#" },
     { name: "Terms", href: "#" },
-    { name: "Security", href: "#security" },
+    { name: "Security", href: "#" },
   ],
 };
 
@@ -49,13 +50,15 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
             {/* Brand Column */}
             <div className="col-span-2">
-              <a href="#" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display">Optimus</span>
-                <span className="text-xs text-muted-foreground font-mono">TM</span>
-              </a>
+              <Link href="/" className="inline-flex items-center gap-2 mb-6">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+                  <Brain className="h-4 w-4 text-primary-foreground" />
+                </div>
+                <span className="text-xl font-sans font-semibold">Recallio</span>
+              </Link>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
-                The platform for teams who ship. Build, deploy, and scale with unprecedented velocity.
+                The AI tutor that never forgets. Built for students who want to study smarter, not harder.
               </p>
 
               {/* Social Links */}
@@ -86,7 +89,7 @@ export function FooterSection() {
                       >
                         {link.name}
                         {"badge" in link && link.badge && (
-                          <span className="text-xs px-2 py-0.5 bg-foreground text-background rounded-full">
+                          <span className="text-xs px-2 py-0.5 bg-primary text-primary-foreground rounded-full">
                             {link.badge}
                           </span>
                         )}
@@ -102,13 +105,13 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            2025 Optimus. All rights reserved.
+            &copy; 2025 Recallio. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              All systems operational
+              <span className="w-2 h-2 rounded-full bg-green-400" />
+              Memory systems operational
             </span>
           </div>
         </div>

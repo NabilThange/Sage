@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { Brain, ArrowRight, Sparkles } from 'lucide-react'
+import { AiNetworkIcon, ArrowRight01Icon, AiStar01Icon } from 'hugeicons-react'
 
 interface StepNameConfirmProps {
   name: string

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Loader2, Sparkles, RotateCcw, FileText } from 'lucide-react'
+import { Loading03Icon, AiStar01Icon, Loading03Icon as RotateIcon, FileAttachmentIcon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 
 interface SummaryWidgetProps {

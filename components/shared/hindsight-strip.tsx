@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { Clock, AlertTriangle, TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { Clock01Icon, Alert01Icon, TrendingUp01Icon, TrendingDown01Icon, Remove01Icon } from 'hugeicons-react'
 
 interface HindsightStripProps {
   lastStudied?: string

@@ -5,16 +5,16 @@ import { Button } from '@/components/ui/button'
 import { QuestionCard } from '@/components/tests/question-card'
 import { useMemory } from '@/providers/memory-provider'
 import {
-  Trophy,
-  Target,
-  Clock,
-  ChevronDown,
-  ChevronUp,
-  BookOpen,
-  RotateCcw,
-  Brain,
-  Sparkles,
-} from 'lucide-react'
+  Trophy01Icon,
+  Target01Icon,
+  Clock01Icon,
+  ArrowDown01Icon,
+  ArrowUp01Icon,
+  Book02Icon,
+  Loading03Icon,
+  AiNetworkIcon,
+  AiStar01Icon,
+} from 'hugeicons-react'
 import { cn } from '@/lib/utils'
 
 export interface QuizQuestion {

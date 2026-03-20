@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { TapCard } from '@/components/shared/tap-card'
-import { GraduationCap, School, BookOpen, Trophy } from 'lucide-react'
+import { MortarboardIcon, School01Icon, Book02Icon, Trophy01Icon } from 'hugeicons-react'
 
 const EDUCATION_LEVELS = [
   { id: 'class-10-12', label: 'Class 10–12', icon: <School className="w-6 h-6" /> },

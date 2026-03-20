@@ -28,7 +28,7 @@ interface StepSemesterProps {
   onSelect: (semester: string) => void
 }
 
-export function StepSemester({ educationLevel, value, onSelect }: StepSemesterProps) {
+export function StepSemester({ educationLevel, curriculum, value, onSelect }: StepSemesterProps) {
   // Engineering uses semesters, everything else uses years
   const isEngineering = educationLevel === 'undergraduate' && curriculum === 'engineering'
   const options = isEngineering ? SEMESTER_OPTIONS : YEAR_OPTIONS

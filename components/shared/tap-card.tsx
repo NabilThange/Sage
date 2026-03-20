@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { Check } from 'lucide-react'
+import { Tick02Icon } from 'hugeicons-react'
 
 interface TapCardProps {
   label: string
@@ -56,7 +56,7 @@ export function TapCard({
       {/* Check mark badge */}
       {isSelected && (
         <div className="absolute top-3 right-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary animate-step-in">
-          <Check className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
+          <Tick02Icon className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
         </div>
       )}
 

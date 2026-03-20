@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
+  ArrowLeft01Icon,
+  ArrowRight01Icon,
   MoreHorizontalIcon,
-} from 'lucide-react'
+} from 'hugeicons-react'
 
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -76,7 +76,7 @@ function PaginationPrevious({
       className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
       {...props}
     >
-      <ChevronLeftIcon />
+      <ArrowLeft01Icon />
       <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   )
@@ -94,7 +94,7 @@ function PaginationNext({
       {...props}
     >
       <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <ArrowRight01Icon />
     </PaginationLink>
   )
 }

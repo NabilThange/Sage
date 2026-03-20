@@ -4,32 +4,32 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "Optimus transformed our deployment pipeline. What used to take hours now happens in seconds.",
-    author: "Sarah Chen",
-    role: "CTO",
-    company: "Meridian Labs",
-    metric: "10x faster deployments",
+    quote: "I went from 52% to 78% in IOT in two weeks. The AI actually remembered every quiz I failed and kept drilling those exact topics.",
+    author: "Aryan Sharma",
+    role: "BTech CSE",
+    company: "Sem 3, VIT Vellore",
+    metric: "+26% in 2 weeks",
   },
   {
-    quote: "The developer experience is unmatched. Our team's productivity has never been higher.",
-    author: "Marcus Webb",
-    role: "Engineering Lead",
-    company: "Flux Systems",
-    metric: "40% more features shipped",
+    quote: "Every morning the planner tells me exactly what to study. It knows I'm weak at graph algorithms without me having to say it again.",
+    author: "Priya Nair",
+    role: "Class 12 CBSE",
+    company: "PCM stream",
+    metric: "12-day study streak",
   },
   {
-    quote: "Finally, infrastructure that scales with our ambition. Zero downtime since we switched.",
-    author: "Elena Rodriguez",
-    role: "VP Engineering",
-    company: "Beacon AI",
-    metric: "99.99% uptime",
+    quote: "I uploaded my entire Operating Systems syllabus PDF and it built me a 3-week exam plan in seconds. Actually stuck to it.",
+    author: "Rishi Kapoor",
+    role: "MCA First Year",
+    company: "IGNOU",
+    metric: "3-week plan in seconds",
   },
   {
-    quote: "The integrations are seamless. We connected our entire stack in a single afternoon.",
-    author: "James Liu",
-    role: "Founder",
-    company: "Prism Analytics",
-    metric: "50+ integrations used",
+    quote: "The flashcards are generated from my own notes. It feels like a tutor that actually read my material before the session.",
+    author: "Ananya Iyer",
+    role: "NEET Aspirant",
+    company: "Class 12, Biology",
+    metric: "96th percentile mock test",
   },
 ];
 
@@ -135,10 +135,10 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Company Logos Marquee Label */}
+        {/* Stats Marquee Label */}
         <div className="mt-24 pt-12 border-t border-foreground/10">
           <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase mb-8 text-center">
-            Trusted by forward-thinking teams
+            Trusted by students across India
           </p>
         </div>
       </div>
@@ -148,13 +148,13 @@ export function TestimonialsSection() {
         <div className="flex gap-16 items-center marquee">
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex gap-16 items-center shrink-0">
-              {["Meridian Labs", "Flux Systems", "Beacon AI", "Prism Analytics", "Nova Tech", "Quantum Corp", "Atlas Digital", "Vertex Labs"].map(
-                (company) => (
+              {["IOT", "Data Structures", "Operating Systems", "Computer Networks", "DBMS", "Discrete Math", "Physics", "Chemistry", "Calculus", "Biology"].map(
+                (subject) => (
                   <span
-                    key={`${setIdx}-${company}`}
-                    className="font-display text-xl md:text-2xl text-foreground/30 whitespace-nowrap hover:text-foreground transition-colors duration-300"
+                    key={`${setIdx}-${subject}`}
+                    className="font-display text-xl md:text-2xl text-foreground/30 whitespace-nowrap hover:text-primary/60 transition-colors duration-300"
                   >
-                    {company}
+                    {subject}
                   </span>
                 )
               )}

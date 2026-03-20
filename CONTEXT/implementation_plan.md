@@ -311,84 +311,83 @@ flowchart TD
 
 ## STEP 5 — Implementation Plan (Feature by Feature)
 
-### Feature 1 — App Shell, Layout & Route Protection
+### Feature 1 — App Shell, Layout & Route Protection ✅ DONE
 
 - **Description:** Create the shared dark-theme app shell with sidebar navigation, protected route wrapper, and auth context. This is the skeleton that all other pages render inside.
 - **Pages involved:** All authenticated routes
 - **Components to build:**
-  - `app/(app)/layout.tsx` — authenticated layout with `AppSidebar` + content area
-  - `components/app/app-sidebar.tsx` — Planner, Mentor, Tests, Profile, 🧠 Memory items + streak counter
-  - `components/app/protected-route.tsx` — checks localStorage, redirects to `/login`
-  - `providers/auth-provider.tsx` — React context for userId, name, streakCount
-  - `providers/memory-provider.tsx` — Context wrapping Hindsight API helpers (retain, recall, reflect)
-  - Update `app/globals.css` to include dark-first theme tokens from DESIGN_SYSTEM.MD
-  - Update `app/layout.tsx` to swap fonts to Plus Jakarta Sans, Lora, Roboto Mono
+  - ✅ `app/(app)/layout.tsx` — authenticated layout with `AppSidebar` + content area
+  - ✅ `components/app/app-sidebar.tsx` — Planner, Mentor, Tests, Profile, 🧠 Memory items + streak counter
+  - ✅ `components/app/protected-route.tsx` — checks localStorage, redirects to `/login`
+  - ✅ `providers/auth-provider.tsx` — React context for userId, name, streakCount
+  - ✅ `providers/memory-provider.tsx` — Context wrapping Hindsight API helpers (retain, recall, reflect)
+  - ✅ Update `app/globals.css` to include dark-first theme tokens from DESIGN_SYSTEM.MD
+  - ✅ Update `app/layout.tsx` to swap fonts to Plus Jakarta Sans, Lora, Roboto Mono
 - **Logic:** Auth context reads from localStorage. Protected route checks for userId on mount. Dark mode is always-on for app routes (class `.dark` on `<html>`).
 - **Dependencies:** None (first feature)
-- **Acceptance criteria:** Sidebar renders with all 5 nav items. Unauthenticated users redirected to `/login`. Dark theme applied. Font swap complete.
+- **Acceptance criteria:** ✅ Sidebar renders with all 5 nav items. ✅ Unauthenticated users redirected to `/login`. ✅ Dark theme applied. ✅ Font swap complete.
 
 ---
 
-### Feature 2 — Mock Auth & Login Page
+### Feature 2 — Mock Auth & Login Page ✅ DONE
 
 - **Description:** Simple login page with name input and two demo user pills (Aryan, Priya). Sets localStorage and routes user based on Hindsight onboarding status.
 - **Pages involved:** `/login`
 - **Components to build:**
-  - `app/login/page.tsx`
-  - `components/login/login-card.tsx` — centered card with name input + demo pills
-  - `components/login/demo-user-pill.tsx` — clickable pill with pre-set name
+  - ✅ `app/(app)/login/page.tsx`
+  - ✅ Login card with name input + demo pills
+  - ✅ Demo user pills (Aryan, Priya)
 - **Logic:** `userId = user_${name.toLowerCase()}_${Date.now()}`. For demo users: `user_aryan_demo` / `user_priya_demo` (fixed IDs so they map to pre-seeded Hindsight banks). Store in localStorage. Call recall() to check onboarding → redirect.
 - **Dependencies:** Feature 1 (auth context)
-- **Acceptance criteria:** Can log in with custom name or demo pill. userId stored in localStorage. Redirects to `/onboarding` for new users, `/planner` for returning users.
+- **Acceptance criteria:** ✅ Can log in with custom name or demo pill. ✅ userId stored in localStorage. ✅ Redirects to `/onboarding` for new users, `/planner` for returning users.
 
 ---
 
-### Feature 3 — Hindsight & Groq API Routes
+### Feature 3 — Hindsight & Groq API Routes ✅ DONE
 
 - **Description:** All 10 API route handlers that proxy to Hindsight Cloud and Groq. These are the backend endpoints every feature calls.
 - **Pages involved:** None (API only)
 - **Components to build:**
-  - `app/api/memory/retain/route.ts`
-  - `app/api/memory/recall/route.ts`
-  - `app/api/memory/reflect/route.ts`
-  - `app/api/onboarding/parse-syllabus/route.ts`
-  - `app/api/onboarding/generate-test/route.ts`
-  - `app/api/planner/chat/route.ts`
-  - `app/api/mentor/chat/route.ts`
-  - `app/api/mentor/generate-quiz/route.ts`
-  - `app/api/mentor/flashcards/route.ts`
-  - `app/api/mentor/summary/route.ts`
-  - `lib/hindsight.ts` — Hindsight SDK wrapper (retain, recall, reflect)
-  - `lib/groq.ts` — Groq SDK wrapper with model config
-- **Logic:** Each route validates the request, calls Hindsight/Groq, and returns JSON. System prompts include memory context from recall().
+  - ✅ `app/api/memory/retain/route.ts`
+  - ✅ `app/api/memory/recall/route.ts`
+  - ✅ `app/api/memory/reflect/route.ts`
+  - ✅ `app/api/onboarding/parse-syllabus/route.ts`
+  - ✅ `app/api/onboarding/generate-test/route.ts`
+  - ✅ `app/api/planner/chat/route.ts`
+  - ✅ `app/api/mentor/chat/route.ts`
+  - ✅ `app/api/mentor/generate-quiz/route.ts`
+  - ✅ `app/api/mentor/flashcards/route.ts`
+  - ✅ `app/api/mentor/summary/route.ts`
+  - ✅ `lib/hindsight.ts` — Hindsight SDK wrapper (retain, recall, reflect)
+  - ✅ `lib/groq.ts` — Groq SDK wrapper with model config
+  - ✅ `lib/key-manager.ts` — API Key Manager with automatic rotation & failover
+  - ✅ `app/api/admin/key-status/route.ts` — Key status monitoring endpoint
+- **Logic:** Each route validates the request, calls Hindsight/Groq, and returns JSON. System prompts include memory context from recall(). Key manager automatically rotates through multiple API keys and handles failures.
 - **Dependencies:** Feature 1 (env vars for API keys)
-- **Acceptance criteria:** Each API route returns correct JSON. Hindsight retain/recall/reflect work end-to-end. Groq chat completion works.
-
-> [!IMPORTANT]
-> Requires `npm install hindsight-core @hindsight-cloud/sdk groq-sdk pdf-parse` (or whatever the actual Hindsight SDK package name is — needs verification). Also requires `.env.local` with `HINDSIGHT_API_KEY`, `GROQ_API_KEY`.
+- **Acceptance criteria:** ✅ Each API route returns correct JSON. ✅ Hindsight retain/recall/reflect work end-to-end. ✅ Groq chat completion works. ✅ Key manager rotates through multiple keys. ✅ Automatic failover on key errors. ✅ Admin endpoint shows key status.
 
 ---
 
-### Feature 4 — Onboarding Flow (8 Steps)
+### Feature 4 — Onboarding Flow (8 Steps) ✅ DONE
 
 - **Description:** The Duolingo-style multi-step onboarding with tap-to-select cards, PDF upload, subject confirmation, topic selection, and animated Profile Reveal.
 - **Pages involved:** `/onboarding`
 - **Components to build:**
-  - `app/(app)/onboarding/page.tsx`
-  - `components/onboarding/onboarding-shell.tsx` — progress bar + step container + transitions
-  - `components/onboarding/step-name-confirm.tsx`
-  - `components/onboarding/step-education-level.tsx`
-  - `components/onboarding/step-curriculum.tsx`
-  - `components/onboarding/step-semester.tsx`
-  - `components/onboarding/step-syllabus-upload.tsx`
-  - `components/onboarding/step-subject-confirm.tsx`
-  - `components/onboarding/step-topics-known.tsx`
-  - `components/onboarding/step-profile-reveal.tsx`
-  - `components/shared/tap-card.tsx`
-  - `components/shared/pill-select.tsx`
+  - ✅ `app/(app)/onboarding/page.tsx` — Full 8-step state machine
+  - ✅ `components/onboarding/onboarding-shell.tsx` — progress bar + step container + transitions
+  - ✅ `components/onboarding/step-name-confirm.tsx`
+  - ✅ `components/onboarding/step-education-level.tsx`
+  - ✅ `components/onboarding/step-curriculum.tsx`
+  - ✅ `components/onboarding/step-semester.tsx`
+  - ✅ `components/onboarding/step-syllabus-upload.tsx` — Drag-drop + 3 pre-loaded templates
+  - ✅ `components/onboarding/step-subject-confirm.tsx`
+  - ✅ `components/onboarding/step-topics-known.tsx`
+  - ✅ `components/onboarding/step-profile-reveal.tsx` — Animated proficiency bars + weak areas
+  - ✅ `components/shared/tap-card.tsx` — Reusable selection card with glow
+  - ✅ `components/shared/pill-select.tsx` — Multi-select pills
 - **Logic:** Step machine manages `currentStep` (1–8). Each step has entry/exit animations (`fade + translateY(8px)`, 200ms). Tap cards auto-advance. PDF upload calls `/api/onboarding/parse-syllabus`. Profile Reveal calculates baseline proficiency and fires `retain()`.
 - **Dependencies:** Feature 2 (userId), Feature 3 (API routes)
-- **Acceptance criteria:** All 8 steps work with smooth transitions. PDF parsing returns subjects. Tap cards auto-advance. Profile Reveal animates proficiency bars. `retain()` fires with complete profile. Navigates to `/planner`.
+- **Acceptance criteria:** ✅ All 8 steps work with smooth transitions. ✅ PDF parsing returns subjects. ✅ Tap cards auto-advance. ✅ Profile Reveal animates proficiency bars. ✅ `retain()` fires with complete profile. ✅ Navigates to `/planner`.
 
 ---
 

@@ -5,21 +5,21 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/providers/auth-provider'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Brain, ArrowRight, Sparkles } from 'lucide-react'
+import { AiNetworkIcon, ArrowRight01Icon, AiStar01Icon } from 'hugeicons-react'
 import { cn } from '@/lib/utils'
 
 const DEMO_USERS = [
   {
     name: 'Aryan',
     description: 'BTech CSE Sem 3 · 12-day streak · Rich memory',
-    gradient: 'from-[#7C6AF5]/20 to-[#7C6AF5]/5',
-    borderColor: 'border-[#7C6AF5]/30',
+    gradient: 'from-primary/20 to-primary/5',
+    borderColor: 'border-primary/30',
   },
   {
     name: 'Priya',
     description: 'Class 12 CBSE · 2-day streak · Early-stage',
-    gradient: 'from-[#F5A524]/20 to-[#F5A524]/5',
-    borderColor: 'border-[#F5A524]/30',
+    gradient: 'from-amber-400/20 to-amber-400/5',
+    borderColor: 'border-amber-400/30',
   },
 ]
 

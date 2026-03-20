@@ -8,7 +8,7 @@ import { MentorChat } from '@/components/mentor/mentor-chat'
 import { StudioPanel } from '@/components/mentor/studio-panel'
 import { useAuth } from '@/providers/auth-provider'
 import { useMemory } from '@/providers/memory-provider'
-import { PanelLeftClose, PanelRightClose, PanelLeft, PanelRight } from 'lucide-react'
+import { SidebarLeft01Icon, SidebarRight01Icon, SidebarLeft01Icon as PanelLeftIcon, SidebarRight01Icon as PanelRightIcon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 
 export default function MentorSubjectPage() {

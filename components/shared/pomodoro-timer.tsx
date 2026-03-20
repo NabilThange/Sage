@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { cn } from '@/lib/utils'
-import { Play, Pause, RotateCcw, Coffee } from 'lucide-react'
+import { Play01Icon, PauseIcon, Loading03Icon, Coffee01Icon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,

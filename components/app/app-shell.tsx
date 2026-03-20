@@ -6,7 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { AppSidebar } from '@/components/app/app-sidebar'
 import { ProtectedRoute } from '@/components/app/protected-route'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { Brain } from 'lucide-react'
+import { AiNetworkIcon } from 'hugeicons-react'
 
 interface AppShellProps {
   children: React.ReactNode
@@ -47,14 +47,14 @@ export function AppShell({
           >
             <SheetHeader>
               <SheetTitle className="flex items-center gap-2">
-                <Brain className="h-5 w-5 text-primary" />
+                <AiNetworkIcon className="h-5 w-5 text-primary" />
                 Memory Panel
               </SheetTitle>
             </SheetHeader>
             <div className="mt-6 px-1">
               {/* Memory Panel content will be injected here in Feature 8 */}
               <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
-                <Brain className="h-10 w-10 mb-3 opacity-40" />
+                <AiNetworkIcon className="h-10 w-10 mb-3 opacity-40" />
                 <p className="text-sm">Memory Panel coming soon</p>
               </div>
             </div>

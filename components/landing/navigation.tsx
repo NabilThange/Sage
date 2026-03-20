@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { AiNetworkIcon, Menu01Icon, Cancel01Icon } from "hugeicons-react";
 
 const navLinks = [
   { name: "Features", href: "#features" },
   { name: "How it works", href: "#how-it-works" },
-  { name: "Developers", href: "#developers" },
+  { name: "Memory", href: "#memory" },
   { name: "Pricing", href: "#pricing" },
 ];
 
@@ -44,10 +45,12 @@ export function Navigation() {
           }`}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <span className={`font-display tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>Optimus</span>
-            <span className={`text-muted-foreground font-mono transition-all duration-500 ${isScrolled ? "text-[10px] mt-0.5" : "text-xs mt-1"}`}>TM</span>
-          </a>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <Brain className="h-4 w-4 text-primary-foreground" />
+            </div>
+            <span className={`font-sans font-semibold tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>Recallio</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-12">
@@ -65,15 +68,17 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+            <Link href="/login" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
               Sign in
-            </a>
-            <Button
-              size="sm"
-              className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
-            >
-              Start creating
-            </Button>
+            </Link>
+            <Link href="/login">
+              <Button
+                size="sm"
+                className={`bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
+              >
+                Get started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -129,19 +134,23 @@ export function Navigation() {
           }`}
           style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
-            <Button 
-              variant="outline" 
-              className="flex-1 rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Sign in
-            </Button>
-            <Button 
-              className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Start creating
-            </Button>
+            <Link href="/login" className="flex-1">
+              <Button 
+                variant="outline" 
+                className="w-full rounded-full h-14 text-base"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Sign in
+              </Button>
+            </Link>
+            <Link href="/login" className="flex-1">
+              <Button 
+                className="w-full bg-primary text-primary-foreground rounded-full h-14 text-base"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get started
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

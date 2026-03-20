@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { FileText, Plus, Brain } from 'lucide-react'
+import { FileAttachmentIcon, Add01Icon, AiNetworkIcon } from 'hugeicons-react'
 import { Button } from '@/components/ui/button'
 import { HindsightStrip } from '@/components/shared/hindsight-strip'
 import { Separator } from '@/components/ui/separator'

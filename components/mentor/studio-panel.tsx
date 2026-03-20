@@ -9,7 +9,7 @@ import { SlideDeckPlaceholder } from '@/components/mentor/slide-deck-placeholder
 import { PomodoroTimer } from '@/components/shared/pomodoro-timer'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
-import { ClipboardCheck } from 'lucide-react'
+import { Task01Icon } from 'hugeicons-react'
 import Link from 'next/link'
 
 interface StudioPanelProps {
