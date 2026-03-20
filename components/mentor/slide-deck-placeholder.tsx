@@ -1,7 +1,8 @@
+
 'use client'
 
 import React from 'react'
-import { PresentationPodiumIcon } from 'hugeicons-react'
+import { Presentation } from 'lucide-react'
 
 export function SlideDeckPlaceholder() {
   return (
