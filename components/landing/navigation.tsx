@@ -47,7 +47,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Brain className="h-4 w-4 text-primary-foreground" />
+              <AiNetworkIcon className="h-4 w-4 text-primary-foreground" />
             </div>
             <span className={`font-sans font-semibold tracking-tight transition-all duration-500 ${isScrolled ? "text-xl" : "text-2xl"}`}>Recallio</span>
           </Link>
@@ -88,9 +88,9 @@ export function Navigation() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <Cancel01Icon className="w-6 h-6" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu01Icon className="w-6 h-6" />
             )}
           </button>
         </div>
