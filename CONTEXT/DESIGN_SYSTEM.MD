@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 LAYOUT.TSX:
 
 // For adding custom fonts with other frameworks, see:
@@ -208,6 +209,229 @@ INDEX.CSS
   --shadow-2xl: var(--shadow-2xl);
 }
 
+=======
+# Design System
+
+> Generated from `layout.tsx` and `index.css`  
+> Stack: Next.js · Tailwind CSS v4 · CSS Custom Properties
+
+---
+
+## Fonts
+
+Three typefaces are loaded via `next/font/google` and exposed as CSS variables:
+
+| Role | Family | Variable |
+|---|---|---|
+| Sans (UI default) | Plus Jakarta Sans | `--font-sans` |
+| Serif (editorial) | Lora | `--font-serif` |
+| Mono (code) | Roboto Mono | `--font-mono` |
+
+```tsx
+// layout.tsx
+import { Plus_Jakarta_Sans, Lora, Roboto_Mono } from "next/font/google";
+
+const fontSans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const fontSerif = Lora({            subsets: ["latin"], variable: "--font-serif" });
+const fontMono  = Roboto_Mono({     subsets: ["latin"], variable: "--font-mono" });
+```
+
+**Usage in Tailwind:**
+
+```html
+<p class="font-sans">Body copy</p>
+<h1 class="font-serif">Editorial heading</h1>
+<code class="font-mono">const x = 1;</code>
+```
+
+---
+
+## Color Palette
+
+All colors use **OKLCH** for perceptual uniformity. They are defined as CSS custom properties and aliased into Tailwind via `@theme inline`.
+
+### Light Mode
+
+| Token | Value | Preview |
+|---|---|---|
+| `--background` | `oklch(0.9232 0.0026 48.72)` | Warm off-white |
+| `--foreground` | `oklch(0.2795 0.0368 260.03)` | Deep navy-grey |
+| `--card` | `oklch(0.9699 0.0013 106.42)` | Near white |
+| `--card-foreground` | `oklch(0.2795 0.0368 260.03)` | Same as foreground |
+| `--primary` | `oklch(0.5854 0.2041 277.12)` | Vivid indigo |
+| `--primary-foreground` | `oklch(1.0000 0 0)` | Pure white |
+| `--secondary` | `oklch(0.8687 0.0043 56.37)` | Warm sand |
+| `--secondary-foreground` | `oklch(0.4461 0.0263 256.80)` | Slate |
+| `--muted` | `oklch(0.9232 0.0026 48.72)` | Same as background |
+| `--muted-foreground` | `oklch(0.5510 0.0234 264.36)` | Mid grey-blue |
+| `--accent` | `oklch(0.9376 0.0260 321.94)` | Soft rose |
+| `--accent-foreground` | `oklch(0.3729 0.0306 259.73)` | Dark slate |
+| `--destructive` | `oklch(0.6368 0.2078 25.33)` | Coral red |
+| `--destructive-foreground` | `oklch(1.0000 0 0)` | White |
+| `--border` | `oklch(0.8687 0.0043 56.37)` | Warm sand |
+| `--input` | `oklch(0.8687 0.0043 56.37)` | Warm sand |
+| `--ring` | `oklch(0.5854 0.2041 277.12)` | Primary indigo |
+
+### Dark Mode
+
+| Token | Value |
+|---|---|
+| `--background` | `oklch(0.2244 0.0074 67.44)` — Dark brown-black |
+| `--foreground` | `oklch(0.9288 0.0126 255.51)` — Cool light |
+| `--card` | `oklch(0.2801 0.0080 59.34)` — Slightly lifted |
+| `--primary` | `oklch(0.6801 0.1583 276.93)` — Lighter indigo |
+| `--secondary` | `oklch(0.3359 0.0077 59.42)` — Dark warm |
+| `--accent` | `oklch(0.3896 0.0074 59.47)` — Muted warm |
+| `--muted-foreground` | `oklch(0.7137 0.0192 261.32)` — Soft grey |
+
+```css
+/* index.css — excerpt */
+:root {
+  --primary: oklch(0.5854 0.2041 277.1173);
+  --accent:  oklch(0.9376 0.0260 321.9388);
+}
+.dark {
+  --primary: oklch(0.6801 0.1583 276.9349);
+  --accent:  oklch(0.3896 0.0074 59.4734);
+}
+```
+
+### Chart Colors
+
+A five-step indigo ramp for data visualisation:
+
+| Token | OKLCH |
+|---|---|
+| `--chart-1` | `oklch(0.5854 0.2041 277.12)` |
+| `--chart-2` | `oklch(0.5106 0.2301 276.97)` |
+| `--chart-3` | `oklch(0.4568 0.2146 277.02)` |
+| `--chart-4` | `oklch(0.3984 0.1773 277.37)` |
+| `--chart-5` | `oklch(0.3588 0.1354 278.70)` |
+
+---
+
+## Sidebar Tokens
+
+Sidebar surfaces have their own dedicated token set so they can be styled independently:
+
+```css
+--sidebar:                  var(--secondary);       /* surface */
+--sidebar-foreground:       var(--foreground);
+--sidebar-primary:          var(--primary);
+--sidebar-primary-foreground: oklch(1 0 0);
+--sidebar-accent:           var(--accent);
+--sidebar-accent-foreground: var(--accent-foreground);
+--sidebar-border:           var(--border);
+--sidebar-ring:             var(--ring);
+```
+
+---
+
+## Border Radius
+
+A single base radius scaled by `calc()`:
+
+| Token | Value |
+|---|---|
+| `--radius` (base) | `1.25rem` |
+| `--radius-sm` | `calc(var(--radius) - 4px)` → `~1rem` |
+| `--radius-md` | `calc(var(--radius) - 2px)` → `~1.125rem` |
+| `--radius-lg` | `var(--radius)` → `1.25rem` |
+| `--radius-xl` | `calc(var(--radius) + 4px)` → `~1.5rem` |
+
+```css
+/* @theme inline — index.css */
+--radius-sm: calc(var(--radius) - 4px);
+--radius-md: calc(var(--radius) - 2px);
+--radius-lg: var(--radius);
+--radius-xl: calc(var(--radius) + 4px);
+```
+
+---
+
+## Shadows
+
+Shadows are built from parametric variables, making them easy to override per theme:
+
+```css
+/* Parameters */
+--shadow-x:       2px;
+--shadow-y:       2px;
+--shadow-blur:    10px;
+--shadow-spread:  4px;
+--shadow-opacity: 0.18;
+--shadow-color:   hsl(240 4% 60%);   /* light mode */
+/* dark mode: hsl(0 0% 0%) */
+```
+
+| Token | Description |
+|---|---|
+| `--shadow-2xs` | Single layer, 9% opacity — barely-there lift |
+| `--shadow-xs` | Same as 2xs |
+| `--shadow-sm` | Double layer, 18% — subtle card shadow |
+| `--shadow` | Same as sm |
+| `--shadow-md` | Double layer, tighter spread |
+| `--shadow-lg` | Double layer, more y-offset |
+| `--shadow-xl` | Double layer, large y-offset |
+| `--shadow-2xl` | Single layer, 45% opacity — strong drop shadow |
+
+```css
+/* Example values — light mode */
+--shadow-sm:  2px 2px 10px 4px hsl(240 4% 60% / 0.18),
+              2px 1px 2px  3px hsl(240 4% 60% / 0.18);
+--shadow-2xl: 2px 2px 10px 4px hsl(240 4% 60% / 0.45);
+```
+
+---
+
+## Tailwind Theme Mapping
+
+All tokens are piped into Tailwind's `@theme inline` block, making them available as utility classes:
+
+```css
+@theme inline {
+  --color-background:       var(--background);
+  --color-foreground:       var(--foreground);
+  --color-primary:          var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:        var(--secondary);
+  --color-accent:           var(--accent);
+  --color-destructive:      var(--destructive);
+  --color-border:           var(--border);
+  --color-input:            var(--input);
+  --color-ring:             var(--ring);
+  /* ... chart, sidebar, muted tokens follow the same pattern */
+
+  --font-sans:  var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono:  var(--font-mono);
+
+  --shadow:    var(--shadow);
+  --shadow-lg: var(--shadow-lg);
+  /* etc. */
+}
+```
+
+This means you can use Tailwind classes directly:
+
+```html
+<div class="bg-primary text-primary-foreground shadow-md rounded-lg font-sans">
+  Primary card
+</div>
+
+<div class="bg-accent text-accent-foreground border border-border rounded-xl">
+  Accent surface
+</div>
+```
+
+---
+
+## Base Layer
+
+A global reset applies border and outline defaults to every element:
+
+```css
+>>>>>>> 84dc7926a207c1f9dbab1c9227778e9c3e35b36c
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -215,4 +439,71 @@ INDEX.CSS
   body {
     @apply bg-background text-foreground;
   }
+<<<<<<< HEAD
 }
+=======
+}
+```
+
+---
+
+## Dark Mode Strategy
+
+Dark mode is activated via the `.dark` class on a parent element (not `prefers-color-scheme`):
+
+```css
+/* index.css */
+@custom-variant dark (&:is(.dark *));
+```
+
+Toggle dark mode in JS/React:
+
+```ts
+document.documentElement.classList.toggle("dark");
+```
+
+Or with Next.js + `next-themes`:
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({ children }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+---
+
+## Quick Reference — Tailwind Class Cheatsheet
+
+```html
+<!-- Backgrounds -->
+bg-background        bg-card          bg-primary
+bg-secondary         bg-muted         bg-accent
+bg-destructive       bg-sidebar
+
+<!-- Text -->
+text-foreground      text-card-foreground
+text-primary-foreground  text-muted-foreground
+text-accent-foreground   text-destructive-foreground
+
+<!-- Borders -->
+border-border        border-input     border-ring
+
+<!-- Radius -->
+rounded-sm   rounded-md   rounded-lg   rounded-xl
+
+<!-- Shadows -->
+shadow-2xs  shadow-xs  shadow-sm  shadow  shadow-md  shadow-lg  shadow-xl  shadow-2xl
+
+<!-- Typography -->
+font-sans   font-serif   font-mono
+
+<!-- Charts (use in custom components) -->
+text-chart-1  text-chart-2  text-chart-3  text-chart-4  text-chart-5
+```
+>>>>>>> 84dc7926a207c1f9dbab1c9227778e9c3e35b36c
